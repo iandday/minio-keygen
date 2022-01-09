@@ -1,0 +1,51 @@
+image: python:3-alpine
+
+before_script:
+  - python --version
+  - pip install -r requirements.txt
+
+stages:
+ - Static Analysis
+ - Formatting
+ - Security
+ - Test
+
+mypy:
+  stage: Static Analysis
+  script:
+  - python -m mypy minio_keygen/minio_keygen.py
+
+flake8:
+  stage: Static Analysis
+  script:
+  - flake8 --max-line-length=130 --max-complexity 8 minio_keygen/*.py
+
+pylint:
+  stage: Static Analysis
+  script:
+  - pylint -d C0301 minio_keygen/*.py
+
+isort:
+  stage: Formatting
+  script:
+  - isort .
+
+safety:
+  stage: Security
+  script:
+  - safety check
+
+pytest:
+  stage: Test
+  script:
+    - py.test --verbose --junit-xml test-reports/results.xml
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - test-reports
+
+coverage:
+  stage: Test
+  allow_failure: true
+  script:
+  - pytest --cov-report term-missing --cov=minio_keygen
