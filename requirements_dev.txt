@@ -5,3 +5,4 @@ pylint
 isort
 safety
 pytest
+pytest-cov
