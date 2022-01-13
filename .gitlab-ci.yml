@@ -39,11 +39,7 @@ safety:
 pytest:
   stage: Test
   script:
-    - py.test --verbose --junit-xml test-reports/results.xml
-  artifacts:
-    expire_in: 7 days
-    paths:
-      - test-reports
+    - py.test --verbose
 
 coverage:
   stage: Test
