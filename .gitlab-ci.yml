@@ -49,4 +49,4 @@ coverage:
   stage: Test
   allow_failure: true
   script:
-  - pytest --cov-report term-missing --cov=minio_keygen
+  - py.test --cov-report term-missing --cov=minio_keygen
