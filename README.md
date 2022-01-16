@@ -1,2 +1,2 @@
 # minio-keygen
-Generate MinIO keys using Python..
+Generate MinIO keys using Python.
