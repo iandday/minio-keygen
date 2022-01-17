@@ -13,7 +13,7 @@ stages:
 mypy:
   stage: Static Analysis
   script:
-  - python -m mypy src/minio_keygen/minio_keygen.py
+  - python -m mypy src/minio_keygen/*.py.py
 
 flake8:
   stage: Static Analysis
