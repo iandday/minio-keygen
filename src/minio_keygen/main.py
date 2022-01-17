@@ -1,20 +1,21 @@
-import sys
-import minio_keygen
+""" main function for minio_keygen"""
 
+import sys
+from . import functions
 
 def main():
     """main function
     """
 
     # parse args
-    parsed_args = minio_keygen.parse_args(sys.argv[1:])
+    parsed_args = functions.parse_args(sys.argv[1:])
 
     key_length = 14
     secret_length = 30
 
     if parsed_args.verbose > 0:
         print('Generating key and secret')
-    key, secret = minio_keygen.compute_keys(key_length, secret_length)
+    key, secret = functions.compute_keys(key_length, secret_length)
 
     print(F'Key: {key}')
     print(F'Secret: {secret}')

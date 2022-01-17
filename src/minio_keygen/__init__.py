@@ -1,6 +1,7 @@
-from .compute_keys import compute_keys
+""" initialize """
+
+from .version import __version__
+from .functions import compute_keys, parse_args
 from .main import main
-from .parse_args import parse_args
 
 __all__ = ['compute_keys', 'parse_args', 'main', ]
-__version__ = '1.0.0'
