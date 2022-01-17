@@ -2,7 +2,7 @@ image: python:3-alpine
 
 before_script:
   - python --version
-  - pip install -r requirements.txt
+  - pip install -r requirements_dev.txt
 
 stages:
  - Static Analysis
@@ -13,17 +13,17 @@ stages:
 mypy:
   stage: Static Analysis
   script:
-  - python -m mypy minio_keygen/minio_keygen.py
+  - python -m mypy minio_keygen/src/minio_keygen.py
 
 flake8:
   stage: Static Analysis
   script:
-  - flake8 --max-line-length=130 --max-complexity 8 minio_keygen/*.py
+  - flake8 --max-line-length=130 --max-complexity 8 minio_keygen/src/*.py
 
 pylint:
   stage: Static Analysis
   script:
-  - pylint -d C0301 minio_keygen/*.py
+  - pylint -d C0301 minio_keygen/src/*.py
 
 isort:
   stage: Formatting
