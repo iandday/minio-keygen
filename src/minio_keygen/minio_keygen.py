@@ -62,6 +62,9 @@ def parse_args(args: list) -> argparse.Namespace:
 
 
 def main():
+    import minio_keygen
+
+
     """main function
     """
 
@@ -78,6 +81,5 @@ def main():
     print(F'Key: {key}')
     print(F'Secret: {secret}')
 
-
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
