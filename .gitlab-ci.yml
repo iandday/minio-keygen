@@ -13,17 +13,17 @@ stages:
 mypy:
   stage: Static Analysis
   script:
-  - python -m mypy minio_keygen/src/minio_keygen.py
+  - python -m mypy src/minio_keygen/minio_keygen.py
 
 flake8:
   stage: Static Analysis
   script:
-  - flake8 --max-line-length=130 --max-complexity 8 minio_keygen/src/*.py
+  - flake8 --max-line-length=130 --max-complexity 8 src/minio_keygen/*.py
 
 pylint:
   stage: Static Analysis
   script:
-  - pylint -d C0301 minio_keygen/src/*.py
+  - pylint -d C0301 src/minio_keygen/*.py
 
 isort:
   stage: Formatting
