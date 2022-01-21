@@ -2,7 +2,7 @@ image: python:3-alpine
 
 before_script:
   - python --version
-  - pip install -r requirements_dev.txt
+  - pip install ".[dev]"
 
 stages:
  - Static Analysis
