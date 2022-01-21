@@ -9,6 +9,7 @@ stages:
  - Formatting
  - Security
  - Test
+ - Build
 
 mypy:
   stage: Static Analysis
@@ -18,7 +19,7 @@ mypy:
 flake8:
   stage: Static Analysis
   script:
-  - flake8 --max-line-length=130 --max-complexity 8 src/minio_keygen/*.py
+  - flake8 --statistics --count --max-line-length=130 --max-complexity 8 src/minio_keygen/*.py
 
 pylint:
   stage: Static Analysis
@@ -49,3 +50,12 @@ coverage:
   allow_failure: true
   script:
   - pytest --cov minio_keygen
+
+build:
+  stage: Deploy
+  script:
+  - python -m build
+  artifacts:
+    paths:
+      - dist/*
+    expire_in: 1 week
