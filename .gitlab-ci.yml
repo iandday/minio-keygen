@@ -48,8 +48,7 @@ coverage:
 build:
   stage: Build
   script:
-    #- python -m build
-    - echo "$PYPI_USERNAME"
+    - python -m build
   artifacts:
     paths:
       - dist/*
