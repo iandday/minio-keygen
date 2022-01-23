@@ -6,7 +6,6 @@ before_script:
 
 stages:
  - Static Analysis
- - Formatting
  - Test
  - Build
  - Publish
@@ -14,27 +13,22 @@ stages:
 mypy:
   stage: Static Analysis
   script:
-  - python -m mypy src/minio_keygen/*.py
+    - python -m mypy src/minio_keygen/*.py
 
 flake8:
   stage: Static Analysis
   script:
-  - flake8 --statistics --count --max-line-length=130 --max-complexity 8 src/minio_keygen/*.py
+    - flake8 --statistics --count --max-line-length=130 --max-complexity 8 src/minio_keygen/*.py
 
 pylint:
   stage: Static Analysis
   script:
-  - pylint -d C0301 src/minio_keygen/*.py
-
-isort:
-  stage: Formatting
-  script:
-  - isort .
+    - pylint -d C0301 src/minio_keygen/*.py
 
 safety:
   stage: Static Analysis
   script:
-  - safety check
+    - safety check
 
 pytest:
   stage: Test
@@ -49,12 +43,12 @@ coverage:
   stage: Test
   allow_failure: true
   script:
-  - pytest --cov minio_keygen
+    - pytest --cov minio_keygen
 
 build:
   stage: Build
   script:
-  - python -m build
+    - python -m build
   artifacts:
     paths:
       - dist/*
@@ -62,6 +56,7 @@ build:
 
 publish-dev:
   stage: Publish
+  script:
     - pip install twine
     - twine check dist/*
     - twine --repository testpypi upload dist/*
