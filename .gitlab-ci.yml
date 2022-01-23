@@ -9,6 +9,7 @@ stages:
  - Formatting
  - Test
  - Build
+ - Publish
 
 mypy:
   stage: Static Analysis
@@ -58,3 +59,11 @@ build:
     paths:
       - dist/*
     expire_in: 1 week
+
+publish-dev:
+  stage: Publish
+    - pip install twine
+    - twine check dist/*
+    - twine --repository testpypi upload dist/*
+only:
+  - development
