@@ -60,5 +60,5 @@ publish-dev:
     - pip install twine
     - twine check dist/*
     - twine --repository testpypi upload dist/*
-only:
-  - development
+  only:
+    - development
