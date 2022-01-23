@@ -59,6 +59,6 @@ publish-dev:
   script:
     - pip install twine
     - twine check dist/*
-    - twine --repository testpypi upload dist/*
+    - twine upload --repository testpypi dist/*
   only:
     - development
