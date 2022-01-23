@@ -52,7 +52,7 @@ coverage:
   - pytest --cov minio_keygen
 
 build:
-  stage: Deploy
+  stage: Build
   script:
   - python -m build
   artifacts:
