@@ -4,9 +4,9 @@ variables:
   TWINE_USERNAME: $PYPI_USERNAME
   TWINE_PASSWORD: $PYPI_PASSWORD
 
-before_script:
-  - python --version
-  - pip install ".[dev]"
+# before_script:
+#   - python --version
+#   - pip install ".[dev]"
 
 stages:
  #- Static Analysis
@@ -52,18 +52,19 @@ stages:
 build:
   stage: Build
   script:
-    - python -m build
+    #- python -m build
+    - echo "$PYPI_USERNAME"
   artifacts:
     paths:
       - dist/*
     expire_in: 1 week
 
-publish-dev:
-  stage: Publish
-  script:
-    - pip install twine
-    - twine check dist/*
-    - twine upload --repository testpypi -u "$PYPI_USERNAME" -p "$PYPI_PASSWORD" dist/*
-    - echo "$PYPI_USERNAME"
-  only:
-    - development
+# publish-dev:
+#   stage: Publish
+#   script:
+#     - pip install twine
+#     - twine check dist/*
+#     - twine upload --repository testpypi -u "$PYPI_USERNAME" -p "$PYPI_PASSWORD" dist/*
+#     - echo "$PYPI_USERNAME"
+#   only:
+#     - development
