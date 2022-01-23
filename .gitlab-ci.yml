@@ -63,6 +63,6 @@ publish-dev:
   script:
     - pip install twine
     - twine check dist/*
-    - twine upload --repository testpypi -u $TWINE_USERNAME -p $TWINE_PASSWORD dist/*
+    - twine upload --repository testpypi -u "$TWINE_USERNAME" -p "$TWINE_PASSWORD" dist/*
   only:
     - development
