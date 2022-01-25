@@ -1,16 +1,9 @@
-#!/usr/bin/env python3
-"""
-MinIO Key Generator
-"""
-
-__author__ = "Ian Day"
-__version__ = "0.1.0"
-__license__ = "GNU GPL"
+""" helper functions"""
 
 import argparse
 import secrets
 from typing import Tuple
-import sys
+from . import version
 
 
 def compute_keys(key_l: int, secret_l: int) -> Tuple[str, str]:
@@ -55,29 +48,14 @@ def parse_args(args: list) -> argparse.Namespace:
     """
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-v', '--verbose', action='count', default=0, help="Verbosity (-v, -vv, etc)")
-    parser.add_argument('--version', action='version', version="%(prog)s (version {version})".format(version=__version__))
+    parser.add_argument('-v', '--verbose',
+                        action='count',
+                        default=0,
+                        help="Verbosity (-v, -vv, etc)"
+                        )
+    parser.add_argument('--version',
+                        action='version',
+                        version=F"%(prog)s (version {version.__version__ })"
+                        )
 
     return parser.parse_args(args)
-
-
-def main():
-    """main function
-    """
-
-    # parse args
-    parsed_args = parse_args(sys.argv[1:])
-
-    key_length = 14
-    secret_length = 30
-
-    if parsed_args.verbose > 0:
-        print('Generating key and secret')
-    key, secret = compute_keys(key_length, secret_length)
-
-    print(F'Key: {key}')
-    print(F'Secret: {secret}')
-
-
-if __name__ == "__main__":
-    main()
