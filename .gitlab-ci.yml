@@ -62,3 +62,12 @@ publish-dev:
     - twine upload --skip-existing --repository testpypi -u $PYPI_USERNAME -p $PYPI_PASSWORD dist/*
   only:
     - development
+
+publish-prod:
+  stage: Publish
+  script:
+    - pip install twine
+    - twine check dist/*
+    - twine upload --skip-existing -u $PYPI_USERNAME -p $PYPI_PASSWORD dist/*
+  only:
+    - main
