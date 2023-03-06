@@ -1,6 +1,8 @@
 name: Pylint
 
-on: [push]
+on: 
+  push:
+  pull_request:
 
 jobs:
   build:
@@ -39,4 +41,17 @@ jobs:
 
     - name: "Test: pytest"
       run: |
-        flake8 --statistics --count --max-line-length=130 --max-complexity 8 src/minio_keygen/*.py
+        py.test --verbose
+
+    - name: "Test: coverage"
+      run: |
+        pytest --cov minio_keygen
+
+    - name: Build package
+      run: python -m build
+
+    - name: Archive package
+      uses: actions/upload-artifact@v2
+      with:
+        name: minio_keygen
+        path: src/dist
