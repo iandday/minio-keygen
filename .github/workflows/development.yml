@@ -2,6 +2,8 @@ name: Pylint
 
 on: 
   push:
+    branches:
+      - '!main'
   pull_request:
 
 jobs:
@@ -51,7 +53,7 @@ jobs:
       run: python -m build
 
     - name: Archive package
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: minio_keygen
         path: dist/
