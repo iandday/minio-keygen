@@ -34,7 +34,7 @@ def compute_keys(key_l: int, secret_l: int) -> Tuple[str, str]:
     key = secrets.token_urlsafe(nbytes=key_l)
     secret = secrets.token_urlsafe(nbytes=secret_l)
 
-    return(key, secret)
+    return (key, secret)
 
 
 def parse_args(args: list) -> argparse.Namespace:

@@ -1,8 +1,8 @@
 # minio-keygen
 
-Generate MinIO keys using Python.  This project was created to learn GitLab CI/CD, Python packaging, and entrypoints.
+CI/CD Status: ![Main Branch](https://github.com/iandday/minio-keygen/actions/workflows/main.yml/badge.svg) | ![Development Branch](https://github.com/iandday/minio-keygen/actions/workflows/development.yml/badge.svg)
 
-
+Generate MinIO keys using Python.  This project was created to learn GitHub Actions, Python packaging, and entrypoints.
 
 Example
 
