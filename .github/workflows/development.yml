@@ -60,7 +60,7 @@ jobs:
 
     - name: Publish distribution to Test PyPI
       uses: pypa/gh-action-pypi-publish@v1.6.4
-      if: matrix.python-version == '3.10'
+      if: github.repository == 'iandday/minio-keygen' && matrix.python-version == '3.10'
       continue-on-error: true
       with:
         password: ${{ secrets.TEST_PYPI_API_TOKEN }}
