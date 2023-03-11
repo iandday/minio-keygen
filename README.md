@@ -17,12 +17,12 @@ Secret: vFMzAqChF1PZea_6CMH0vmmcZglziMqDR2zXmtxI
 ```code=bash
 
    # Set next version number
-   export RELEASE=x.x.x
+   export RELEASE=vx.x.x
 
    # Create tags
    git commit --allow-empty -m "Release $RELEASE"
-   git tag -a $RELEASE -m "Version $RELEASE"
+   git tag -a $RELEASE -m "$RELEASE"
 
    # Push
-   git push upstream --tags
+   git push --tags
 ```
