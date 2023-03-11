@@ -11,3 +11,18 @@ ian@Ians-MBP minio-keygen % minio-keygen
 Key: S9EITflKfJs4pAcOO1o
 Secret: vFMzAqChF1PZea_6CMH0vmmcZglziMqDR2zXmtxI
 ```
+
+## Releasing
+
+```code=bash
+
+   # Set next version number
+   export RELEASE=x.x.x
+
+   # Create tags
+   git commit --allow-empty -m "Release $RELEASE"
+   git tag -a $RELEASE -m "Version $RELEASE"
+
+   # Push
+   git push upstream --tags
+```
